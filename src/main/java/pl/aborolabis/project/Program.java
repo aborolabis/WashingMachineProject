@@ -73,6 +73,6 @@ public class Program {
                 "water temperature: " + waterTemperature + "\n" +
                 "max load size: " + maxLoadSize + "\n" +
                 "spinning speed: " + spinningSpeed + "\n" +
-                "time of the program: " + timeInSec;
+                "time of the program: " + TimeUtils.getTimeToString(timeInSec);
     }
 }
