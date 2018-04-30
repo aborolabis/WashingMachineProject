@@ -30,7 +30,7 @@ class WashingMachineTest {
     }
 
     @Test
-    public void testSelectProgram(){
+    public void testSelectProgramShouldReturnProgram(){
         int programNumber = 2;
         Program program = washingMachine.selectProgram(programNumber);
 
@@ -41,5 +41,63 @@ class WashingMachineTest {
         Assertions.assertEquals(1000, program.getSpinningSpeed());
         Assertions.assertEquals(3600, program.getTimeInSec());
     }
+
+    @Test
+    public void testSelectProgramShouldReturnNull(){
+        int programNumber = 10;
+
+        Program program = washingMachine.selectProgram(programNumber);
+
+        Assertions.assertEquals(null, program);
+    }
+
+    @Test
+    public void testChangeWaterTemperature(){
+        int programNumber = 2;
+        Program program = washingMachine.selectProgram(programNumber);
+
+        int newWaterTemperature = 100;
+        washingMachine.changeProgramWaterTemperature(newWaterTemperature);
+
+        Assertions.assertEquals(programNumber, program.getProgramNumber());
+        Assertions.assertEquals("wools", program.getProgramName());
+        Assertions.assertEquals(newWaterTemperature, program.getWaterTemperature());
+        Assertions.assertEquals(2, program.getMaxLoadSize());
+        Assertions.assertEquals(1000, program.getSpinningSpeed());
+        Assertions.assertEquals(3600, program.getTimeInSec());
+    }
+
+    @Test
+    public void testChangeSpinningSpeed(){
+        int programNumber = 2;
+        Program program = washingMachine.selectProgram(programNumber);
+
+        int newSpinningSpeed = 5000;
+        washingMachine.changeProgramSpinSpeed(newSpinningSpeed);
+
+        Assertions.assertEquals(programNumber, program.getProgramNumber());
+        Assertions.assertEquals("wools", program.getProgramName());
+        Assertions.assertEquals(30, program.getWaterTemperature());
+        Assertions.assertEquals(2, program.getMaxLoadSize());
+        Assertions.assertEquals(newSpinningSpeed, program.getSpinningSpeed());
+        Assertions.assertEquals(3600, program.getTimeInSec());
+    }
+
+    @Test
+    public void testChangeTime(){
+        int programNumber = 2;
+        washingMachine.selectProgram(programNumber);
+
+        String newTime = "02:30";
+        Program program = washingMachine.changeProgramTime(newTime);
+
+        Assertions.assertEquals(programNumber, program.getProgramNumber());
+        Assertions.assertEquals("wools", program.getProgramName());
+        Assertions.assertEquals(30, program.getWaterTemperature());
+        Assertions.assertEquals(2, program.getMaxLoadSize());
+        Assertions.assertEquals(1000, program.getSpinningSpeed());
+        Assertions.assertEquals(9000, program.getTimeInSec());
+    }
+
 
 }

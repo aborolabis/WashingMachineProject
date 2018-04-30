@@ -37,9 +37,22 @@ public class WashingMachine {
         if(selectedProgram.isPresent()){
             currentProgram = selectedProgram.get();
         }
-
         return currentProgram;
     }
 
+    public Program changeProgramWaterTemperature(int newWaterTemperature){
+        currentProgram.setWaterTemperature(newWaterTemperature);
+        return this.currentProgram;
+    }
 
+    public Program changeProgramSpinSpeed(int spinSpeed){
+        currentProgram.setSpinningSpeed(spinSpeed);
+        return this.currentProgram;
+    }
+
+    public Program changeProgramTime(String time){
+        int timeStringToSecInt = TimeUtils.getStringToSec(time);
+        currentProgram.setTimeInSec(timeStringToSecInt);
+        return this.currentProgram;
+    }
 }

@@ -15,4 +15,18 @@ public class TimeUtils {
         }
     }
 
+    public static int getStringToSec(String timeString){
+        String[] split = timeString.split(":");
+        int hours = 0;
+        int mins = 0;
+        if(split.length == 2){
+            hours = Integer.parseInt(split[0]);
+            mins = Integer.parseInt(split[1]);
+        } else if (split.length == 1){
+            mins = Integer.parseInt(split[0]);
+        }
+
+        return (hours*60*60) + (mins*60);
+    }
+
 }

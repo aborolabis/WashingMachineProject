@@ -14,4 +14,13 @@ class TimeUtilsTest {
         Assertions.assertEquals("02:30:00", timeToString);
     }
 
+    @Test
+    public void testGetStringToSec(){
+        String time = "02:30";
+
+        int stringToSec = TimeUtils.getStringToSec(time);
+
+        Assertions.assertEquals(9000, stringToSec);
+    }
+
 }
